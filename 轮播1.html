@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+	window.onload=function(){
+	var win=$(".banner_img")[0];
+	var imgs=$("a",win);
+	var lis=$("li",win);
+	var btnLs=$(".btnL",win)[0];
+     var btnRs=$(".btnR",win)[0];
+	var num=0;
+	 
+	// 自动轮播
+	var t=setInterval(move,1500);
+	// 改变当前下标	
+	win.onmouseover=function(){
+		clearInterval(t);
+
+	}
+	win.onmouseout=function(){
+		clearInterval(t);
+		t=setInterval(move,1500);
+		
+	}
+  function move(){
+		num++;
+		if(num==imgs.length){
+			num=0;
+		}
+		// 所有的层级降低
+		for(var i=0;i<imgs.length;i++){
+			imgs[i].style.zIndex=0;
+			lis[i].className="";
+			// lis[i].style.background="#fff";
+		}/*当前的层级调高*/
+		imgs[num].style.zIndex=3;
+		lis[num].className="hot";
+       // lis[i].style.background="red";
+	}
+	for(var i=0;i<imgs.length;i++){
+		lis[i].index=i;
+		lis[i].onclick=function(){
+			num=this.index;
+			for(var j=0;j<imgs.length;j++){
+				imgs[j].style.zIndex=0;
+				lis[j].className="";
+			}
+			imgs[this.index].style.zIndex=3;
+			lis[this.index].className="hot";
+			
+
+		}
+    }
+    
+    btnLs.onclick=function(){
+    		move();
+    }
+    btnRs.onclick=function(){
+    	num--;
+    	if (num<0) {
+    	num=imgs.length-1;	
+    	}
+    	for(var i=0;i<imgs.length;i++){
+			imgs[i].style.zIndex=0;
+			lis[i].className="";
+			// lis[i].style.background="#fff";
+		}/*当前的层级调高*/
+		imgs[num].style.zIndex=3;
+		lis[num].className="hot";
+    
+    }
+
+function $(selecter,ranges){
+			var ranges=ranges?ranges:document;
+			var first=selecter.charAt(0);//返回在指定位置的字符串
+			if(first=='#'){
+				return document.getElementById(selecter.substring(1));//截取字符串 substring(起始，结束)不包括结束位置
+			}
+			else if(first=='.'){
+				return getClass(selecter.substring(1),ranges);//类函数
+			}else if(/^[a-z][a-z1-6]{0,10}$/.test(selecter)){//匹配名字是否符合标准//正则表达式
+				return ranges.getElementsByTagName(selecter);
+
+			}else if(/^<[a-z][a-z1-6]{0,10}>$/.test(selecter)){
+				//判断输入的是一个<div>新的div时
+				return ranges.createElement(selecter.slice(1,-1));
+			}
+			}
+			function getClass(className,range){
+	var range=range?range:document;
+	if(range.getElementsByClassName){
+		return range.getElementsByClassName(className);
+
+	}else{
+		var all=range.getELementsByTagName('*');
+		var newarr=[];
+		for(var i=0;i<all.length;i++){
+// 			if(all[i].className==className)
+			if(checkClass(all[i],className))//检查class名中有没有要找的class名字符串
+			{
+					newarr.push(all[i]);
+			}
+		}
+		return newarr;
+	}
+}
+////检查class名中有没有要找的class名字符串
+function checkClass(obj,classname){
+	var arrC=obj.className.split("");//按空格分割  字符串分割成数组
+	for(var i=0;i<arrC.length;i++){
+		if(arrC[i]==classname){
+			return true;
+		}
+	}
+	return false;
+}
+}
+	</script>
+	<style >
+	a{
+	text-decoration: none;
+}
+img{
+	border:none;
+}
+
+
+
+.banner_img{
+	width:740px;
+	height:350px;
+	background: yellow;
+	margin:50px auto;
+	position: relative;
+	overflow: hidden;
+
+}
+.banner_img a{
+	display: block;
+	background:yellow;
+	font-size: 0;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+img{
+	border: none;
+}
+
+ul{
+	width: 168px;
+	height: 15px;
+	position: absolute;
+	bottom: 10px;
+	left:50%;
+    margin-left: -81px;
+    float: left;
+    list-style: none;
+    z-index: 9999;
+}
+li{
+	display: block;
+	width: 15px;
+	height: 15px;
+	float: left;
+    list-style-type: none;
+    margin-right: 6px;
+    background:#DEDEDE;
+    border-radius:8px;
+}
+.hot{
+	background: red;
+}
+.btnL{
+           width:30px;
+            height:70px;
+            position: absolute;
+            top: 50%;
+            right:0;
+            margin-top: -35px;
+            z-index: 20;
+            overflow: hidden;
+
+        }
+.btnR{
+      width:30px;
+      height:70px;
+            position: absolute;
+            top: 50%;
+            left :0;
+            margin-top: -35px;
+            z-index: 20;
+             overflow: hidden; 
+        }
+.btnL img{
+	display: block;
+	margin-left: -40px;
+}
+	</style>
+</head>
+<body>
+	<div class="banner_img">
+			<a href="#" class="banner1">
+				<img src="./image/banner1.jpg" alt=""/  style="z-index:10">
+			</a>
+			<a href="#" class="banner1">
+				<img src="./image/banner2.jpg" alt=""/>
+			</a>
+			<a href="#" class="banner1">
+				<img src="./image/banner3.jpg" alt=""/>
+			</a>
+			<a href="#" class="banner1">
+				<img src="./image/banner4.jpg" alt=""/>
+			</a>
+			<a href="#" class="banner1">
+				<img src="./image/banner5.jpg" alt=""/>
+			</a>
+			<a href="#" class="banner1">
+				<img src="./image/banner6.jpg" alt=""/>
+			</a>
+			<a href="#" class="banner1">
+				<img src="./image/banner7.jpg" alt=""/>
+			</a>
+			<a href="#" class="banner1">
+				<img src="./image/banner8.jpg" alt=""/>
+			</a>
+		
+			
+				 <ul>
+				  <li class="hot"></li>
+				  <li ></li> 
+				  <li ></li>
+				  <li ></li>
+				  <li ></li>
+				  <li ></li> 
+				  <li ></li>
+				  <li ></li>
+				</ul>
+			<div class="btnL">
+				<img src="./image/lbnextpre.png">
+			</div>
+			<div
+			 class="btnR"><img src="./image/lbnextpre.png">
+			 </div>
+			
+</div>	
+</body>
+</html>
