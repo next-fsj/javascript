@@ -102,6 +102,7 @@ dom对象  dom集合
 * el.lastChild
 * el.nextSibling
 * el.previousSibling
+
 ### 操作样式
 * el.styel.属性
 * el.currentStyle.属性
@@ -110,6 +111,7 @@ dom对象  dom集合
 ### 获取位置信息
 * offsetTop   offsetLeft  //获取相对于父元素的坐标
 * scrollTop   scrollLeft  //获取具有滚动条元素的位置属性
+
 ### 操作属性
 * el.属性
 * el.属性=值
