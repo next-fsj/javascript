@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+    window.onload=function () {
+	var tab=document.getElementsByClassName("win")[0];
+	var lis=document.getElementsByClassName("win1");
+	var downMenu=document.getElementsByClassName("downMenu");
+	
+	for(var i=0;i<lis.length;i++){
+		lis[i].index=i;
+		lis[i].onmouseover=function(){
+			for(var j=0;j<lis.length;j++){
+				downMenu[j].style.display="none";
+			}
+
+			downMenu[this.index].style.display="block";
+		}
+		lis[i].onmouseout=function(){
+			for(var j=0;j<lis.length;j++){
+				downMenu[j].style.display="none";
+			}
+		}
+	}
+}
+	</script>
+	<style>
+    .win{
+    	width:1000px;
+    	height:30px;
+        margin: 10px auto;
+        position: relative;
+    }
+    .win1{
+    	width: 250px;
+    	height: 30px;
+        float: left;
+        background: red;
+        line-height: 30px;
+        text-align:center;
+        color: #ccc;
+    }
+    .win1:hover{
+    	background: green;
+    }
+     .downMenu{
+     	width: 996px;
+     	height: 28px;
+     	 border: 2px solid  red;
+         display:none;
+         position: absolute;
+         left: 0;
+         top:30px;
+         line-height: 30px;
+         text-align:center;
+          color: #666;
+     }
+	</style>
+</head>
+<body>
+<div class="win">
+	<div class="win1">首页
+	<div class="downMenu">首页</div>
+	</div>
+	<div class="win1">充值缴费
+	<div class="downMenu">充值缴费</div>
+	</div>
+	<div class="win1">移动中心
+	<div class="downMenu">移动中心</div>
+	</div>
+	<div class="win1">充值缴费
+	<div class="downMenu">充值缴费</div>
+	</div>
+</div>
+	
+</body>
+</html>

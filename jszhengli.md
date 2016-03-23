@@ -108,4 +108,8 @@ dom对象  dom集合
 ### 节点操作
 * el.parnetNote
 * el.childNotes
+* el.firstChild
+* el.lastChild
+* el.nextSibling
+* el.previousSibling
 ### 其他
