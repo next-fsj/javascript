@@ -96,20 +96,35 @@ dom对象  dom集合
 * var el document.getElementsName()
 
 ### 筛选元素
-* el.
-### 操作样式
-* el.styel.属性
-* el.currentStyle.属性
-* getComputedStle(el,null).属性
-
-### 获取位置信息
-
-### 操作属性
-### 节点操作
 * el.parnetNote
 * el.childNotes
 * el.firstChild
 * el.lastChild
 * el.nextSibling
 * el.previousSibling
+### 操作样式
+* el.styel.属性
+* el.currentStyle.属性
+* getComputedStle(el,null).属性
+
+### 获取位置信息
+ *offsetTop   offsetLeft  //获取相对于父元素的坐标
+ *scrollTop   scrollLeft  //获取具有滚动条元素的位置属性
+### 操作属性
+   el.属性
+   el.属性=值
+
+### 节点操作
+* document.createElement("div")  //创建元素节点
+* arrt=document.createAttribute();
+  arrt.nodeValue=""
+  obj.setAttributeNode(arrt)
+* el.innerHTML="";               //创建属性节点
+* document.createTexTNode()
+* 父对象.appendChild(el)     //插入到最后
+* 父对象.insertBefore(el，之前的对象)  //插入到某个对象之前
+* 父对象.removeChild(删除的对象)     //删除对象只删除表面的，内存还保留
+* 父对象.replaceChild(新节点，被修改的节点)；
+* var newobj=obj.cloneNode(false/true)
+  父对象.appendChild(newobj)
 ### 其他
