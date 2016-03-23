@@ -108,11 +108,11 @@ dom对象  dom集合
 * getComputedStle(el,null).属性
 
 ### 获取位置信息
- *offsetTop   offsetLeft  //获取相对于父元素的坐标
- *scrollTop   scrollLeft  //获取具有滚动条元素的位置属性
+* offsetTop   offsetLeft  //获取相对于父元素的坐标
+* scrollTop   scrollLeft  //获取具有滚动条元素的位置属性
 ### 操作属性
-   el.属性
-   el.属性=值
+* el.属性
+* el.属性=值
 
 ### 节点操作
 * document.createElement("div")  //创建元素节点
