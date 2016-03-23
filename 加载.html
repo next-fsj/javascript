@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+	window.onload=function(){
+	  var floor=$(".floor");  //获取每个图骗的位置
+	  var floorArr=[];
+	  for(var i=0;i<floor.length;i++){
+	  	floorArr.push(floor[i].offsetTop);
+	  }
+
+	  var cH=document.documentElement.clientHeight;
+	   window.onscroll=function(){
+	  	var obj=document.body.scrollTop?document.body:document.documentElement;
+	  	var tops=obj.scrollTop;
+	  	//k可视范围+滚轮>=floor[i].offsetTOp
+	  	for(var i=0;i < floor.length;i++){
+	  		if (tops+cH>=floor[i].offsetTop+200){
+	  			var imgs=$("img",floor[i]);
+	  			for (var j= 0; j < imgs.length; j++) {
+	  				imgs[j].src=imgs[j].title;
+	  			}
+	  		}
+	  	}
+	  }
+	  	function $(selecter,ranges){
+			var ranges=ranges?ranges:document;
+			var first=selecter.charAt(0);//返回在指定位置的字符串
+			if(first=='#'){
+				return document.getElementById(selecter.substring(1));//截取字符串 substring(起始，结束)不包括结束位置
+			}
+			else if(first=='.'){
+				return getClass(selecter.substring(1),ranges);//类函数
+			}else if(/^[a-z][a-z1-6]{0,10}$/.test(selecter)){//匹配名字是否符合标准//正则表达式
+				return ranges.getElementsByTagName(selecter);
+
+			}else if(/^<[a-z][a-z1-6]{0,10}>$/.test(selecter)){
+				//判断输入的是一个<div>新的div时
+				return ranges.createElement(selecter.slice(1,-1));
+			}
+			}
+	  	
+	  	function getClass(className,range){
+	var range=range?range:document;
+	if(range.getElementsByClassName){
+		return range.getElementsByClassName(className);
+
+	}else{
+		var all=range.getELementsByTagName('*');
+		var newarr=[];
+		for(var i=0;i<all.length;i++){
+// 			if(all[i].className==className)
+			if(checkClass(all[i],className))//检查class名中有没有要找的class名字符串
+			{
+					newarr.push(all[i]);
+			}
+		}
+		return newarr;
+	}
+}
+////检查class名中有没有要找的class名字符串
+function checkClass(obj,classname){
+	var arrC=obj.className.split("");//按空格分割  字符串分割成数组
+	for(var i=0;i<arrC.length;i++){
+		if(arrC[i]==classname){
+			return true;
+		}
+	}
+	return false;
+}
+function animate (obj,attrObj,dur,fun,callback) {
+	 clearInterval(obj.t);
+	if(arguments.length==2){
+	  dur=500;
+	  fun=Tween.Linear;
+	  callback=null;
+	}
+	if(arguments.length==3){
+	  if(typeof dur=="number"){
+	  dur=dur;
+	  fun=Tween.Linear;
+	  callback=null;
+	  }
+	  if(typeof dur=="function"){
+	    if(dur.length>=4){ 
+			  fun=dur;
+			  callback=null;
+			  dur=500;
+		}else{  
+			  fun=Tween.Linear;
+			  callback=dur;
+			  dur=500;
+		}
+	  
+	  }
+	}
+	if(arguments.length==4){
+	   if(typeof dur=="number"){
+	     dur=dur;
+		 if(fun.length>=4){
+			  fun=fun;
+			  callback=null;
+			  
+		}else{
+	     	  callback=fun;
+			  fun=Tween.Linear;
+		   
+		}
+		 
+	   }else{	  
+				  callback=fun;
+				  fun=dur;
+				  dur=500
+				 
+			
+	  }
+	}
+    var time=0;
+	var start={};var change={};
+    for (var i in attrObj) {
+	 start[i]=setCss(obj,i);
+	 change[i]=attrObj[i]-start[i];
+    }
+
+	obj.t=setInterval(function(){
+	  if(time>=dur){
+	   clearInterval(obj.t);
+	   for (var i in attrObj) {
+		 setCss(obj,i,attrObj[i]);
+	   }
+	   if(callback){
+	     callback.call(obj);
+	   }
+	  }else{
+	  for (var i in attrObj) {
+	   setCss(obj,i,fun(time,start[i],change[i],dur));
+	  }
+	  time+=60
+	  }
+	},60)
+  }
+}
+
+	</script>
+	<style type="text/css">
+	 .head{
+	          	width: 1000px;
+	          	height: 170px;
+	          	background: #ccc;
+	          	margin: 0 auto;
+	          }
+	          .footer {
+	          	width: 1000px;
+	          	height: 170px;
+	          	background: #ccc;
+	          	margin: 0 auto;
+	          }
+	          .floor1{
+	          	width:1000px;
+	          	height: 500px;
+	          	background: #fefefe;
+	          	margin: 30px auto;
+	          	text-align: center;
+	          	
+	          }
+	          .floor2{
+	          	width:1000px;
+	          	height: 500px;
+	          	background: #fefefe;
+	          	margin: 30px auto;
+	          	text-align: center;
+	          	
+	          }
+	          .floor3{
+	          	width:1000px;
+	          	height: 500px;
+	          	background: #fefefe;
+	          	margin: 30px auto;
+	          	text-align: center;
+	          	
+	          }
+	          .floor4{
+	          	width:1000px;
+	          	height: 500px;
+	          	background: #fefefe;
+	          	margin: 30px auto;
+	          	text-align: center;
+	          	
+	          }
+	          .floor5{
+	          	width:1000px;
+	          	height: 500px;
+	          	background: #fefefe;
+	          	margin: 30px auto;
+	          	text-align: center;
+	          	
+	          }
+	</style>
+</head>
+<body>
+	<div class="head">
+		head
+	</div>
+	<div class="floor floor1">
+		<img src="" alt="" title="./image/banner1.jpg">
+	</div>
+	<div class="floor floor2">
+		<img src="" alt="" title="./image/banner2.jpg">
+	</div>
+	<div class="floor floor3">
+		<img src="" alt="" title="./image/banner3.jpg">
+	</div>
+	<div class="floor floor4">
+		<img src="" alt="" title="./image/banner4.jpg">
+	</div>
+	<div class="floor floor5">
+		<img src="" alt="" title="./image/banner5.jpg">
+	</div>
+	<div class="footer">
+		flooer
+	</div>
+</body>
+</html>
