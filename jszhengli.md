@@ -2,11 +2,11 @@
 
 ##程序语言
 
-  *基础逻辑处理部分
-  *变量 数据类型 (数据存储)
-  *分支和循环运算符    (逻辑操作)
-  *函数（对语言的扩展）
-   ### 数据类型
+  * 基础逻辑处理部分
+  * 变量 数据类型 (数据存储)
+  * 分支和循环运算符    (逻辑操作)
+  * 函数（对语言的扩展）
+ ### 数据类型
 ```javascript
 var vr=1.2;            //Numeber
 var vr="asd";          //String
@@ -80,11 +80,11 @@ vr.console();
 
 
 ###针对特定用途的部分
-> *当js来浏览器运行的那一刻
-> *浏览器会创建一个window对象
-> *window对象中很多的属性和方法
-> *这写属性和方法不用就加 window.就可以使用
-
+> * 当js来浏览器运行的那一刻
+> * 浏览器会创建一个window对象
+> * window对象中很多的属性和方法
+> * 这写属性和方法不用就加 window.就可以使用
+ 
 dom对象  dom集合
 
 
@@ -96,7 +96,7 @@ dom对象  dom集合
 * var el document.getElementsName()
 
 ### 筛选元素
-*el.
+* el.
 ### 操作样式
 * el.styel.属性
 * el.currentStyle.属性
@@ -106,6 +106,6 @@ dom对象  dom集合
 
 ### 操作属性
 ### 节点操作
-*el.parnetNote
-*el.childNotes
+* el.parnetNote
+* el.childNotes
 ### 其他
