@@ -70,16 +70,17 @@ vr.prototype.console=function(){
 var vr=new vr();
 vr.console();
 ```
-//函数的常用方法
-//字符串的常用方法
-//函数对象中的方法
-//对象的增删改查 原型链
-//数字对象身上的方法 toFixed()
-//Math 对象身上的方法
+> 函数的常用方法
+> 字符串的常用方法
+> 函数对象中的方法
+> 对象的增删改查 原型链
+> 数字对象身上的方法 toFixed()
+> Math 对象身上的方法
 
 
 
 ###针对特定用途的部分
+
 > * 当js来浏览器运行的那一刻
 > * 浏览器会创建一个window对象
 > * window对象中很多的属性和方法
@@ -128,6 +129,7 @@ vr.console();
 
 
 > 子元素
+
 * el.childNotes
 * el.nodeChilds
 
@@ -188,9 +190,11 @@ vr.console();
 ### 其他
 
 ### get和set在对象中的使用
+```javascript
  var obj ={
 	a:1,
 	b:2,
 	set c (X) {console.log(111)};
 	get c () {return 5;}
 }
+```
