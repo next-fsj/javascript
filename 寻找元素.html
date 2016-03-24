@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.box{
+			width: 500px;
+			height: 500px;
+			border: 3px solid black;
+			margin:30px auto;
+			position: relative;
+		}
+		.xiao{
+			width: 50px;
+			height: 50px;
+			border: 3px solid black;
+			position: absolute;
+		}
+        .span{
+        	width: 50px;
+			height: 50px;
+			border: 3px solid black;
+			position: absolute;
+        }
+
+	</style>
+</head>
+<body>
+	<div class="box">
+		<div ></div>
+	</div>
+	<ul>
+		<li class="id">通过id获取</li>
+		<li class="cl">通过classname获取</li>
+		<li class="tg">通过获tagname取</li>
+		<li class="qs">通过querySelector获取</li>
+		<li class="qa">通过querySelectorAll获取</li>
+        
+	</ul>
+	<script>
+		
+
+
+			var box=document.querySelector(".box");
+			var drop = function(){
+            var rm=Math.floor(Math.random()*10);
+            // document.createElement("spen");
+
+			for(var i = 0,el; i < 10; i++) {
+				// var el=document.createElement((i===rm)?"span":"div");
+				//   if (i===rm) {
+				//   	el.id="span";
+				//   }
+                if(i===rm){
+                	var el=document.createElement("span");
+                	el.className="span";
+                    el.id="span";
+
+                }else{
+
+				el=document.createElement("div");
+				el.className="xiao";             
+			   }
+                
+				box.appendChild(el);
+				el.style.left=Math.floor(Math.random()*(box.offsetWidth-el.offsetWidth))+"Px";
+				el.style.top=Math.floor(Math.random()*(box.offsetHeight-el.offsetHeight))+"px";
+			}
+		}
+		drop();
+        var els = box.nextElementSibling.children;
+        console.log(els)
+        for(var i=0;i<els.length;i++){
+        	els[i].onclick=function(){
+        		var els=this.getAttribute("class");
+        		var el;
+        		if (els==='id'){
+        			el=document.getElementById('span');
+        		}
+        		else if(els==='cl'){
+        			el=document.getElementsByClassName('span')[0];
+
+                }else if(els==='qs'){
+        			el=document.querySelector('.span');
+
+        		}
+                else if(els==='tg'){
+        			el=document.getElementsByTagName('span')[0];
+
+        		}
+        		else if(els==="qa"){
+        			el=document.querySelectorAll('span')[0];
+
+        		}
+
+        		el.style.background="red";
+                setTimeout(function(){
+                	el.style.background="none";
+                    box.innerHTML="";
+                    drop();
+                },300);
+        	}
+          
+        }
+
+
+	</script>	
+</body>
+</html>

@@ -70,7 +70,7 @@ vr.prototype.console=function(){
 var vr=new vr();
 vr.console();
 ```
-//函数的常用方法
+> *函数的常用方法
 //字符串的常用方法
 //函数对象中的方法
 //对象的增删改查 原型链
@@ -86,47 +86,101 @@ vr.console();
 > * 这写属性和方法不用就加 window.就可以使用
  
 dom对象  dom集合
-
+> 按照我们的正常编程思路
+第一步找出元素
+我们从document对象开始 利用它身上的方法
+找出我们的元素（dom元素或dom集合）
 
 ### 选取元素
-
+//dom对象
+* var el=document.createElement()  //创建元素节点
 * var el document.getElementById()
+* var el document.querySelector()       // 不兼容IE6    只获取第一个dir对象
+
+//dom集合
 * var el document.getElementsByClassName()
-* var el document.getElementsBYTagName()
-* var el document.getElementsName()
+* var el document.getElementsByTagName()
+* var el document.getElementsByName()
+* var el document.querySelectorAll()   //ie8     值是获取的所有元素的组成的数组
+
+dom对象
+js会用一个很大的对象来代表页面中我们看到的那个元素
+
+
+dom集合
+在一个类数组对象中存储很多的dom对象构成一个集合
+
 
 ### 筛选元素
+> 从一个dom对象开始根据逻辑关系再去寻找dom对象
+> 父元素
+
 * el.parnetNote
+* el.parnetElement
+
+
+> 子元素
 * el.childNotes
+* el.nodeChilds
+
 * el.firstChild
+* el.firstElementChild
+
+
 * el.lastChild
+* el.lastElementChild
+
+> 兄弟元素
+
 * el.nextSibling
 * el.previousSibling
-
-### 操作样式
-* el.styel.属性
-* el.currentStyle.属性
-* getComputedStle(el,null).属性
 
 ### 获取位置信息
 * offsetTop   offsetLeft  //获取相对于父元素的坐标
 * scrollTop   scrollLeft  //获取具有滚动条元素的位置属性
 
 ### 操作属性
-* el.属性
-* el.属性=值
 
-### 节点操作
-* document.createElement("div")  //创建元素节点
-* arrt=document.createAttribute();
-  arrt.nodeValue=""
-  obj.setAttributeNode(arrt)
-* el.innerHTML="";               //创建属性节点
-* document.createTexTNode()
-* 父对象.appendChild(el)     //插入到最后
-* 父对象.insertBefore(el，之前的对象)  //插入到某个对象之前
-* 父对象.removeChild(删除的对象)     //删除对象只删除表面的，内存还保留
-* 父对象.replaceChild(新节点，被修改的节点)；
-* var newobj=obj.cloneNode(false/true)
-  父对象.appendChild(newobj)
+* el.setAttribute()
+* el.getAttribute()
+* el.removeAttribute()
+* el.hasAttribute()
+* el.className
+* el.id
+* el.classList
+
+### 节点操作(NODE)
+* el.appendChild()     //插入到最后
+* el.removeChild()       
+* el.insertBefore()  //插入到某个对象之前
+* el.removeChild(删除的对象)     //删除对象只删除表面的，内存还保留
+* el.replaceChild(新节点，被修改的节点)；
+* el.cloneNode(false/true)
+
+
+### 获取元素信息（HTMlELEMENT）
+
+* el.offsetWidth;           //获取相对于父元素的坐标
+* el.offsetHeight;       
+* el.offsetleft;                 
+* el.offsettop;
+* el.offsetParent;  //具有定位属性的父元素
+* el.getBoundingClietRect();  //计算元素距离窗口位置的
+* el.innerHTML;
+* getCoputedStyle(el,null).width //带单位
+
+### 操作样式
+
+* el.styel(读取行内样式的值，设置行内样式的值)
+
+
+
 ### 其他
+
+### get和set在对象中的使用
+ var obj ={
+	a:1,
+	b:2,
+	set c (X) {console.log(111)};
+	get c () {return 5;}
+}
