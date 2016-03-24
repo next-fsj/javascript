@@ -70,7 +70,7 @@ vr.prototype.console=function(){
 var vr=new vr();
 vr.console();
 ```
-> *函数的常用方法
+//函数的常用方法
 //字符串的常用方法
 //函数对象中的方法
 //对象的增删改查 原型链
@@ -85,11 +85,15 @@ vr.console();
 > * window对象中很多的属性和方法
 > * 这写属性和方法不用就加 window.就可以使用
  
-dom对象  dom集合
+###dom对象  dom集合
+
 > 按照我们的正常编程思路
-第一步找出元素
-我们从document对象开始 利用它身上的方法
-找出我们的元素（dom元素或dom集合）
+
+> 第一步找出元素
+
+> 我们从document对象开始 利用它身上的方法
+
+> 找出我们的元素（dom元素或dom集合）
 
 ### 选取元素
 //dom对象
@@ -103,16 +107,20 @@ dom对象  dom集合
 * var el document.getElementsByName()
 * var el document.querySelectorAll()   //ie8     值是获取的所有元素的组成的数组
 
-dom对象
-js会用一个很大的对象来代表页面中我们看到的那个元素
+>dom对象
+
+>js会用一个很大的对象来代表页面中我们看到的那个元素
 
 
-dom集合
-在一个类数组对象中存储很多的dom对象构成一个集合
+>dom集合
+
+>在一个类数组对象中存储很多的dom对象构成一个集合
 
 
 ### 筛选元素
+
 > 从一个dom对象开始根据逻辑关系再去寻找dom对象
+
 > 父元素
 
 * el.parnetNote
@@ -134,6 +142,7 @@ dom集合
 
 * el.nextSibling
 * el.previousSibling
+* el.nextElementSibling
 
 ### 获取位置信息
 * offsetTop   offsetLeft  //获取相对于父元素的坐标
@@ -141,8 +150,8 @@ dom集合
 
 ### 操作属性
 
-* el.setAttribute()
-* el.getAttribute()
+* el.setAttribute()    //  设置
+* el.getAttribute()    // 获取
 * el.removeAttribute()
 * el.hasAttribute()
 * el.className
@@ -150,6 +159,7 @@ dom集合
 * el.classList
 
 ### 节点操作(NODE)
+
 * el.appendChild()     //插入到最后
 * el.removeChild()       
 * el.insertBefore()  //插入到某个对象之前
